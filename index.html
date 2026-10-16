@@ -1,0 +1,298 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Pen and Sword</title>
+  <meta name="description" content="Menswear for the first chapter. Sharp enough for the meeting, easy enough for everything after.">
+  <meta name="theme-color" content="#FFFEF4">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Bellefair stands in for The Seasons (Adobe Fonts). Swap via --font-display in styles.css. -->
+  <link href="https://fonts.googleapis.com/css2?family=Bellefair&family=Hanken+Grotesk:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="is-loading">
+  <a class="skip" href="#main">Skip to content</a>
+
+  <!-- Brand mark, defined once and reused. Paths extracted from the brandbook PDF. -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <g id="g-quill"><path d="M169.15 33.64C173.13 16.4 167.62 2.76 167.62 2.76C141.86 5.23 124.9 25.21 90.16 69.52C60.9 106.84 58.73 134.92 58.73 134.92C56.32 133.36 57.02 120.66 57.02 120.66C39.23 148.11 53.27 165.5 53.27 165.5C45.4 162.34 42.94 146.62 42.94 146.62C28.35 178.1 41.04 184.37 41.04 184.37L43.7 186.1L28.73 209.2L24.66 221.94L46.1 187.4L135.04 50.15C135.42 49.57 136.06 49.31 136.47 49.58C136.88 49.84 139.08 50.36 137.17 52.88L47.62 188.89L25.12 222.25L35.09 213.32L50.41 189.68C95.17 204.68 165.82 48.04 169.15 33.64"/><path class="vein" d="M135.12 182.67L133.24 184.04L65.4 90.61L67.28 89.24Z"/></g>
+      <g id="g-sword"><path d="M74.55 28.64C71.03 28.08 67.43 28.89 64.43 30.82L43.6 43.63C34.22 46.5 28.95 54.37 28.95 54.37L9.76 70.87C7.02 73.15 5.16 76.34 4.63 79.87C4.02 83.93 4.34 89.59 8.1 95.91C8.1 95.91 4.11 83.96 11.34 78.67C18.57 73.37 31.81 62.8 31.81 62.8C31.81 62.8 37.19 60.88 38.5 66.42C39.81 71.95 33.82 75.19 29.99 73.52C29.99 73.52 52.09 88.51 62.43 104.02C72.78 119.53 131.49 197.9 131.49 197.9C131.49 197.9 154.12 220.96 161.3 221.75L40.89 57.36C39.53 57.75 38.01 57.27 37.12 56.07C35.99 54.51 36.32 52.32 37.88 51.18C39.43 50.04 41.62 50.38 42.76 51.94C43.65 53.15 43.64 54.73 42.86 55.92L163.27 220.31C164.68 213.22 149.52 184.69 149.52 184.69C149.52 184.69 92.51 105.08 80.84 90.53C69.18 75.99 61.55 50.4 61.55 50.4C61.99 54.55 57.1 59.29 52.21 56.37C47.33 53.45 50.78 48.9 50.78 48.9C50.78 48.9 64.15 39.98 71.39 34.68C78.62 29.38 88.8 36.79 88.8 36.79C83.91 31.3 78.61 29.29 74.55 28.64"/><path d="M40.75 41.7C34.31 37.59 23.93 23.03 20.91 17.95L20.91 17.95L11.3 24.98L11.3 24.98C15.33 29.5 26.4 43.89 27.97 51.07C27.9 50.76 27.97 51.07 27.97 51.07C34.11 44.35 40.75 41.7 40.75 41.7"/><path d="M14.86 13.09L12.9 6.05L2.13 2.38L2.37 13.76L8.5 17.75Z"/><path d="M9.98 23.76L20.14 16.32C20.77 15.85 21.01 15.14 20.05 13.83C19.1 12.53 18 13.01 18 13.01L15.37 14.94L10.1 18.79L7.47 20.72C7.47 20.72 6.68 21.62 7.64 22.93C8.6 24.23 9.35 24.22 9.98 23.76"/></g>
+    </defs>
+  </svg>
+
+  <div class="cursor" aria-hidden="true"><span class="cursor__dot"></span><span class="cursor__label"></span></div>
+
+  <header class="nav" data-nav>
+    <a class="nav__brand" href="#top" aria-label="Pen and Sword, back to top">
+      <svg class="mark mark--nav" viewBox="0 0 176 224" aria-hidden="true" data-mark></svg>
+      <span class="nav__name">Pen and Sword</span>
+    </a>
+    <nav class="nav__links" aria-label="Primary">
+      <a href="#day" class="link">The day</a>
+      <a href="#values" class="link">Values</a>
+      <a href="#edit" class="link">The edit</a>
+      <a href="#mark" class="link">The mark</a>
+    </nav>
+    <button class="nav__menu" aria-expanded="false" aria-controls="sheet" data-menu>
+      <span class="nav__menu-label">Menu</span>
+      <span class="nav__menu-lines" aria-hidden="true"><i></i><i></i></span>
+    </button>
+  </header>
+
+  <div class="sheet" id="sheet" hidden>
+    <nav aria-label="Menu">
+      <ol>
+        <li><a href="#day"><span>01</span>The day</a></li>
+        <li><a href="#values"><span>02</span>Values</a></li>
+        <li><a href="#edit"><span>03</span>The edit</a></li>
+        <li><a href="#mark"><span>04</span>The mark</a></li>
+      </ol>
+    </nav>
+    <p class="sheet__foot">Collection 01, in the making.</p>
+  </div>
+
+  <main id="main">
+    <!-- HERO -->
+    <section class="hero" id="top" aria-label="Pen and Sword">
+      <div class="hero__meta hero__meta--l"><span>Menswear</span><span>Collection 01</span></div>
+      <div class="hero__meta hero__meta--r"><span>Desk to drinks</span><span>In the making</span></div>
+
+      <div class="hero__stage" data-tilt>
+        <svg class="mark mark--hero" viewBox="0 0 176 224" role="img" aria-label="Pen and Sword mark: a sword crossed with a quill" data-mark data-hero-mark></svg>
+      </div>
+
+      <h1 class="hero__word">
+        <span class="sr-only">Pen and Sword</span>
+        <img src="assets/wordmark.svg" alt="" class="wordmark" data-hero-word>
+      </h1>
+
+      <p class="hero__line" data-hero-line>Menswear for the first chapter.</p>
+
+      <a href="#manifesto" class="scrollcue" aria-label="Continue to the next section">
+        <span class="scrollcue__track"><span class="scrollcue__bead"></span></span>
+      </a>
+    </section>
+
+    <!-- MANIFESTO -->
+    <section class="manifesto" id="manifesto">
+      <p class="eyebrow">Why we exist</p>
+      <p class="manifesto__text" data-words>
+        Sharp enough for the meeting. Easy enough for everything after. Clothes for men at the start of something, priced like we remember what that feels like.
+      </p>
+    </section>
+
+    <!-- DESK TO DRINKS -->
+    <section class="day" id="day" aria-label="From desk to drinks">
+      <div class="day__pin">
+        <div class="day__hud" aria-hidden="true">
+          <span class="day__clock" data-clock>08:15</span>
+          <span class="day__phase" data-phase>Morning</span>
+        </div>
+
+        <div class="day__track" data-track>
+          <article class="day__panel day__panel--intro">
+            <h2 class="day__title"><span>From desk</span><span>to drinks.</span></h2>
+            <p class="day__lede">One long day. One wardrobe that keeps up.</p>
+            <span class="hcue" aria-hidden="true"><span class="hcue__bead"></span></span>
+          </article>
+
+          <article class="day__panel" data-time="08:15" data-phase-name="Morning">
+            <div class="look" data-look="shirt,trouser"></div>
+            <div class="day__copy">
+              <p class="day__stamp">08:15</p>
+              <h3>The commute.</h3>
+              <p>Coffee in one hand, the day in the other. A crisp oxford that survives the train.</p>
+            </div>
+          </article>
+
+          <article class="day__panel" data-time="11:00" data-phase-name="Late morning">
+            <div class="look" data-look="vneck,trouser"></div>
+            <div class="day__copy">
+              <p class="day__stamp">11:00</p>
+              <h3>The pitch.</h3>
+              <p>A fine knit over the collar. Sleeves down, voice steady.</p>
+            </div>
+          </article>
+
+          <article class="day__panel" data-time="13:30" data-phase-name="Afternoon">
+            <div class="look" data-look="polo,wide"></div>
+            <div class="day__copy">
+              <p class="day__stamp">13:30</p>
+              <h3>The lunch.</h3>
+              <p>Jacket off. Still the sharpest person at the table.</p>
+            </div>
+          </article>
+
+          <article class="day__panel" data-time="18:45" data-phase-name="Evening">
+            <div class="look" data-look="overshirt,wide"></div>
+            <div class="day__copy">
+              <p class="day__stamp">18:45</p>
+              <h3>The drinks.</h3>
+              <p>Same trousers. Different evening.</p>
+            </div>
+          </article>
+        </div>
+
+        <div class="day__rail" aria-hidden="true">
+          <span class="day__rail-fill" data-rail></span>
+          <span class="day__tick" style="--at:0">08:15</span>
+          <span class="day__tick" style="--at:.333">11:00</span>
+          <span class="day__tick" style="--at:.666">13:30</span>
+          <span class="day__tick" style="--at:1">18:45</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- VALUES -->
+    <section class="values" id="values">
+      <header class="values__head">
+        <p class="eyebrow">What we stand for</p>
+        <h2 class="values__title">Four rules, worn daily.</h2>
+      </header>
+      <ol class="values__list" data-values>
+        <li class="value">
+          <button class="value__btn" aria-expanded="false" id="v1" aria-controls="v1b">
+            <span class="value__no">01</span>
+            <span class="value__word">Understated</span>
+            <svg class="value__mark" viewBox="0 0 176 224" aria-hidden="true" data-mark></svg>
+          </button>
+          <div class="value__body" id="v1b" role="region" aria-labelledby="v1"><div><p>Simple design, strong presence. Nothing extra, nothing missing, everything there for a reason.</p></div></div>
+        </li>
+        <li class="value">
+          <button class="value__btn" aria-expanded="false" id="v2" aria-controls="v2b">
+            <span class="value__no">02</span>
+            <span class="value__word">Expressive</span>
+            <svg class="value__mark" viewBox="0 0 176 224" aria-hidden="true" data-mark></svg>
+          </button>
+          <div class="value__body" id="v2b" role="region" aria-labelledby="v2"><div><p>Colour, fabric and cut that say who you are. Quietly bold, never loud about it.</p></div></div>
+        </li>
+        <li class="value">
+          <button class="value__btn" aria-expanded="false" id="v3" aria-controls="v3b">
+            <span class="value__no">03</span>
+            <span class="value__word">Versatile</span>
+            <svg class="value__mark" viewBox="0 0 176 224" aria-hidden="true" data-mark></svg>
+          </button>
+          <div class="value__body" id="v3b" role="region" aria-labelledby="v3"><div><p>Built for real life. Dressed up for the room, dressed down for the night, same piece.</p></div></div>
+        </li>
+        <li class="value">
+          <button class="value__btn" aria-expanded="false" id="v4" aria-controls="v4b">
+            <span class="value__no">04</span>
+            <span class="value__word">Within reach</span>
+            <svg class="value__mark" viewBox="0 0 176 224" aria-hidden="true" data-mark></svg>
+          </button>
+          <div class="value__body" id="v4b" role="region" aria-labelledby="v4"><div><p>Well made, well fitted, fairly priced. Good style shouldn't come with a gatekeeper.</p></div></div>
+        </li>
+      </ol>
+    </section>
+
+    <!-- THE EDIT -->
+    <section class="edit" id="edit">
+      <header class="edit__head">
+        <div>
+          <p class="eyebrow">Collection 01</p>
+          <h2 class="edit__title">The first edit.</h2>
+        </div>
+        <p class="edit__note">Eight pieces, in the works.</p>
+        <div class="edit__ctrls">
+          <button class="arrow" data-prev aria-label="Previous pieces"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+          <button class="arrow" data-next aria-label="Next pieces"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+        </div>
+      </header>
+
+      <div class="rail" data-rail-scroller tabindex="0" aria-label="Collection 01 pieces, scroll horizontally">
+        <ul class="rail__list" data-products></ul>
+      </div>
+      <div class="rail__progress" aria-hidden="true"><span data-rail-progress></span></div>
+    </section>
+
+    <!-- THE MARK -->
+    <section class="markstory" id="mark">
+      <div class="markstory__pin">
+        <div class="markstory__art" aria-hidden="true">
+          <svg class="mark mark--story" viewBox="0 0 176 224" data-mark data-story-mark></svg>
+        </div>
+        <div class="markstory__copy">
+          <p class="eyebrow">The mark</p>
+          <div class="markstory__pair">
+            <div data-story-a>
+              <h3>The sword.</h3>
+              <p>Say who you are and mean it. Curved, not rigid, so it moves like the quill does.</p>
+            </div>
+            <div data-story-b>
+              <h3>The quill.</h3>
+              <p>Do the work and do it well. A feather, because the point is to fly.</p>
+            </div>
+          </div>
+          <p class="markstory__sum" data-story-sum>Strength and intellect, worn together.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot" id="footer">
+    <div class="foot__inner">
+      <div class="foot__lead">
+        <p class="eyebrow">Collection 01</p>
+        <p class="foot__line">Coming soon.<br>Dress accordingly.</p>
+        <p class="foot__clock" aria-live="off">
+          <span class="foot__time" data-local-time>--:--</span>
+          <span class="foot__verdict" data-local-verdict>where you are</span>
+        </p>
+      </div>
+
+      <nav class="foot__cols" aria-label="Footer">
+        <div class="foot__col">
+          <h2 class="foot__h">Explore</h2>
+          <ul>
+            <li><a class="link" href="#day">The day</a></li>
+            <li><a class="link" href="#values">Values</a></li>
+            <li><a class="link" href="#edit">The edit</a></li>
+            <li><a class="link" href="#mark">The mark</a></li>
+          </ul>
+        </div>
+        <div class="foot__col">
+          <h2 class="foot__h">Help</h2>
+          <ul>
+            <li><span class="foot__soon">Sizing <i>Soon</i></span></li>
+            <li><span class="foot__soon">Shipping <i>Soon</i></span></li>
+            <li><span class="foot__soon">Returns <i>Soon</i></span></li>
+            <li><span class="foot__soon">Contact <i>Soon</i></span></li>
+          </ul>
+        </div>
+        <div class="foot__col">
+          <h2 class="foot__h">Follow</h2>
+          <ul>
+            <li><span class="foot__soon">Instagram <i>Soon</i></span></li>
+            <li><span class="foot__soon">TikTok <i>Soon</i></span></li>
+            <li><span class="foot__soon">Pinterest <i>Soon</i></span></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+
+    <div class="foot__bar">
+      <span>&copy; 2026 Pen and Sword</span>
+      <span class="foot__bar-mid">Strength and intellect, worn together.</span>
+      <button class="foot__totop" data-totop aria-label="Back to top">
+        <svg class="mark mark--totop" viewBox="0 0 176 224" aria-hidden="true" data-mark></svg>
+        <span class="foot__totop-line" aria-hidden="true"></span>
+      </button>
+    </div>
+
+    <div class="foot__word" data-foot-word aria-hidden="true">
+      <div class="foot__wordmark"></div>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+  <script src="garments.js"></script>
+  <script src="products.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>

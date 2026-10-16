@@ -1,0 +1,14 @@
+/* Collection 01. Placeholder data until the line is final.
+   PLACEHOLDER PHOTOS: these are the reference images from the brandbook moodboard,
+   not Pen and Sword's own photography. Replace every `image` before the site goes public.
+   To update a piece: set `image`, `imageAlt`, `price` (e.g. '£85') and optionally `href`. */
+window.PRODUCTS = [
+  { no: '01', name: 'The Rib',      detail: 'Ribbed knit tee',         image: 'assets/photos/ribbed-tee.jpg',         imageAlt: 'Charcoal ribbed knit tee, jacket in hand',        focus: '50% 30%', price: null, href: null },
+  { no: '02', name: 'The Stripe',   detail: 'Relaxed striped shirt',   image: 'assets/photos/striped-shirt.jpg',      imageAlt: 'Pale blue striped shirt, open collar, sleeves pushed up', focus: '50% 20%', price: null, href: null },
+  { no: '03', name: 'The Zip',      detail: 'Cable zip cardigan',      image: 'assets/photos/cable-zip-cardigan.jpg', imageAlt: 'Oatmeal cable-knit zip cardigan over brown trousers', focus: '50% 40%', price: null, href: null },
+  { no: '04', name: 'The Pleat',    detail: 'Wide pleated trouser',    image: 'assets/photos/pleated-trouser.jpg',    imageAlt: 'Light grey wide pleated trousers with a brown belt', focus: '50% 50%', price: null, href: null },
+  { no: '05', name: 'The Polo',     detail: 'Ribbed knit polo',        image: 'assets/photos/knit-polo.jpg',          imageAlt: 'Tobacco brown ribbed knit polo',                   focus: '50% 30%', price: null, href: null },
+  { no: '06', name: 'The Wide',     detail: 'Wide-leg trouser',        image: 'assets/photos/wide-trouser.jpg',       imageAlt: 'Black knit polo with black wide-leg trousers',     focus: '50% 60%', price: null, href: null },
+  { no: '07', name: 'The Oxford',   detail: 'Cotton oxford shirt',     image: 'assets/photos/commute-white-shirt.jpg', imageAlt: 'White oxford shirt tucked into grey trousers',    focus: '50% 15%', price: null, href: null },
+  { no: '08', name: 'The V',        detail: 'Fine-gauge V-neck',       image: 'assets/photos/pitch-navy-vneck.jpg',   imageAlt: 'Navy V-neck knit over a white shirt and tie',      focus: '50% 25%', price: null, href: null },
+];
