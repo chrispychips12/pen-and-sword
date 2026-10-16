@@ -5,6 +5,9 @@
   const $ = (s, el = document) => el.querySelector(s);
   const $$ = (s, el = document) => [...el.querySelectorAll(s)];
   const REDUCED = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // With large browser text the pinned day can't fit a screen, so it falls back to a plain vertical list
+  const BIG_TEXT = parseFloat(getComputedStyle(document.documentElement).fontSize) >= 22;
+  const STATIC_DAY = REDUCED || BIG_TEXT;
   const FINE = matchMedia('(hover: hover) and (pointer: fine)').matches;
   const HAS_GSAP = !!(window.gsap && window.ScrollTrigger);
   const FOREST = '#333D29';
@@ -27,14 +30,14 @@
   (window.PRODUCTS || []).forEach((p) => {
     const li = document.createElement('li');
     li.className = 'piece';
-    const media = p.image
-      ? `<img src="${p.image}" alt="${p.imageAlt || p.name}" loading="lazy" decoding="async" style="object-position:${p.focus || '50% 50%'}">`
-      : markSvg;
+    const img = `<img src="${p.image}" alt="${p.imageAlt || p.name}" loading="lazy" decoding="async" style="object-position:${p.focus || '50% 50%'}">`;
+    const media = !p.image ? markSvg : p.webp
+      ? `<picture><source type="image/webp" srcset="${p.webp}" sizes="(min-width: 900px) 24vw, 72vw">${img}</picture>`
+      : img;
     const tag = p.href ? 'a' : 'div';
     li.innerHTML = `
       <${tag} class="piece__tile" data-tile${p.href ? ` href="${p.href}"` : ''}>
         <span class="piece__no">No. ${p.no}</span>
-        ${p.price == null ? '<span class="piece__soon">Coming soon</span>' : ''}
         <div class="piece__layer">${media}</div>
       </${tag}>
       <div class="piece__meta">
@@ -85,9 +88,9 @@
   }
 
   /* ---------- No GSAP (CDN blocked) or reduced motion: show everything, keep it usable ---------- */
+  if (!HAS_GSAP || STATIC_DAY) $('.day').classList.add('is-static');
   if (!HAS_GSAP || REDUCED) {
     document.body.classList.remove('is-loading');
-    $('.day').classList.add('is-static');
     if (!HAS_GSAP) {
       $('.hero__word .wordmark').style.clipPath = 'none';
       $$('.hero__line, .scrollcue').forEach((e) => (e.style.opacity = 1));
@@ -146,10 +149,12 @@
         $('a', sheet).focus({ preventScroll: true });
       }));
       nav.classList.add('is-dark'); nav.classList.remove('is-hidden');
+      $$('main, footer, .skip, .nav__links').forEach((el) => (el.inert = true));
       lenis && lenis.stop();
       document.documentElement.style.overflow = 'hidden';
     } else {
       sheet.classList.remove('is-open');
+      $$('main, footer, .skip, .nav__links').forEach((el) => (el.inert = false));
       syncNavTone();
       lenis && lenis.start();
       document.documentElement.style.overflow = '';
@@ -157,7 +162,16 @@
     }
   };
   menuBtn.addEventListener('click', () => setSheet(!sheetOpen));
-  addEventListener('keydown', (e) => { if (e.key === 'Escape' && sheetOpen) { setSheet(false); menuBtn.focus(); } });
+  addEventListener('keydown', (e) => {
+    if (!sheetOpen) return;
+    if (e.key === 'Escape') { setSheet(false); menuBtn.focus(); return; }
+    if (e.key !== 'Tab') return;
+    // cycle between the menu button and the sheet links
+    const stops = [menuBtn, ...$$('a', sheet)].filter((el) => el.getClientRects().length);
+    const i = stops.indexOf(document.activeElement);
+    if (e.shiftKey && i <= 0) { e.preventDefault(); stops[stops.length - 1].focus(); }
+    else if (!e.shiftKey && i === stops.length - 1) { e.preventDefault(); stops[0].focus(); }
+  });
 
   /* In-page anchors use the smooth scroller */
   $$('a[href^="#"]').forEach((a) => a.addEventListener('click', (e) => {
@@ -189,7 +203,7 @@
     document.addEventListener('pointerenter', () => cur.classList.remove('is-hidden'));
     document.addEventListener('pointerover', (e) => {
       const lab = e.target.closest('[data-cursor]');
-      const link = e.target.closest('a, button, [data-tile]');
+      const link = e.target.closest('a, button');
       cur.classList.toggle('is-label', !!lab);
       cur.classList.toggle('is-link', !lab && !!link);
       if (lab) label.textContent = lab.dataset.cursor;
@@ -199,8 +213,8 @@
   /* ---------- Magnetic controls ---------- */
   if (FINE && HAS_GSAP && !REDUCED) {
     $$('.arrow, .nav__menu, [data-totop], .nav__brand').forEach((el) => {
-      const xTo = gsap.quickTo(el, 'x', { duration: 0.6, ease: 'elastic.out(1, 0.5)' });
-      const yTo = gsap.quickTo(el, 'y', { duration: 0.6, ease: 'elastic.out(1, 0.5)' });
+      const xTo = gsap.quickTo(el, 'x', { duration: 0.7, ease: 'expo.out' });
+      const yTo = gsap.quickTo(el, 'y', { duration: 0.7, ease: 'expo.out' });
       el.addEventListener('pointermove', (e) => {
         const r = el.getBoundingClientRect();
         xTo((e.clientX - (r.left + r.width / 2)) * 0.3);
@@ -398,6 +412,7 @@
   /* ---------- Desk to drinks ---------- */
   const mm = gsap.matchMedia();
   mm.add('(min-width: 1px)', () => {
+    if (STATIC_DAY) { $$('[data-draw]').forEach((s) => draw(s)); return; }
     const day = $('.day');
     const track = $('[data-track]');
     const clock = $('[data-clock]');

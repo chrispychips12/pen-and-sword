@@ -26,7 +26,7 @@ Temporary live preview: https://chrispychips12.github.io/pen-and-sword/ (GitHub 
 
 ## Adding real products
 
-In `products.js`, set each piece's `image`, `imageAlt` and `price`. `focus` sets which part of the photo stays in frame (CSS object-position). A piece with no image shows a faint brand mark. Recommended photo ratio: 4:5.
+In `products.js`, set each piece's `image` (an 800px-wide JPEG fallback), `webp` (480px and 800px WebP versions, so phones download the small one), `imageAlt` and `price`. Give it an `href` and the tile becomes a link. `focus` sets which part of the photo stays in frame (CSS object-position). A piece with no image shows a faint brand mark. Recommended photo ratio: 4:5.
 
 The current photos are the brandbook's reference imagery, which isn't Pen and Sword's own photography. Swap them all for real shoots before a proper launch.
 
