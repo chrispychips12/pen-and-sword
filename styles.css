@@ -396,6 +396,17 @@ ol, ul { list-style: none; margin: 0; padding: 0; }
 .garment .g-btn circle { fill: var(--g-line, currentColor); stroke: none; }
 
 .day__copy { display: grid; gap: 10px; max-width: 34ch; }
+/* Landscape phones: too short to stack the look above the copy, so sit them side by side */
+@media (max-width: 899px) and (orientation: landscape) {
+  .day__panel:not(.day__panel--intro) {
+    grid-template-rows: none;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+    align-items: center;
+    padding: calc(var(--nav-h) + 16px) var(--gutter) 60px;
+  }
+  .look { height: min(66svh, 420px); max-height: none; }
+  .day__copy h3 { font-size: var(--step-2); }
+}
 .day__stamp { font-size: var(--step--1); letter-spacing: .14em; }
 .day__copy h3 { font-family: var(--font-display); font-weight: 400; font-size: var(--step-3); line-height: 1; }
 .day__copy p:last-child { color: color-mix(in oklab, var(--day-fg) 74%, var(--day-bg)); }

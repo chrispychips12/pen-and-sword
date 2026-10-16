@@ -10,6 +10,8 @@
   const FOREST = '#333D29';
   const FEATHER = '#FFFEF4';
   const clamp = (v, a = 0, b = 1) => Math.min(b, Math.max(a, v));
+  // Pinned, scroll-driven sections misbehave when the browser restores a mid-page position on reload
+  if ('scrollRestoration' in history && !location.hash) history.scrollRestoration = 'manual';
 
   /* ---------- Marks: nested groups so intro and scroll can move them independently ---------- */
   $$('[data-mark]').forEach((svg) => {
@@ -226,7 +228,7 @@
   });
   if (HAS_GSAP) {
     values.forEach((v, i) => ScrollTrigger.create({
-      trigger: v, start: 'top 62%', end: 'bottom 62%',
+      trigger: v, start: 'top 62%', end: 'bottom 62%', refreshPriority: -1,
       onToggle: (st) => { if (st.isActive && !hoverLock) setValue(i); },
     }));
   } else setValue(0);
@@ -333,8 +335,6 @@
     navOver($('.values'), 'values');
     navOver($('.markstory'), 'mark');
     navOver($('.foot'), 'foot');
-    ScrollTrigger.sort();
-    ScrollTrigger.refresh();
     return;
   }
 
@@ -387,12 +387,12 @@
   const revealEls = $$('.manifesto .eyebrow, .values__head > *, .edit__head > *, .foot__top > *');
   revealEls.forEach((el) => el.classList.add('reveal'));
   ScrollTrigger.batch(revealEls, {
-    start: 'top 88%', once: true,
+    start: 'top 88%', once: true, refreshPriority: -1,
     onEnter: (batch) => gsap.to(batch, { opacity: 1, y: 0, duration: 1.2, ease: 'expo.out', stagger: 0.08 }),
   });
   gsap.from('.piece', {
     x: 80, opacity: 0, duration: 1.3, ease: 'expo.out', stagger: 0.07,
-    scrollTrigger: { trigger: '.rail', start: 'top 85%', once: true },
+    scrollTrigger: { trigger: '.rail', start: 'top 85%', once: true, refreshPriority: -1 },
   });
 
   /* ---------- Desk to drinks ---------- */
@@ -470,12 +470,18 @@
     timed.forEach((panel) => {
       const copy = $$('.day__copy > *', panel);
       gsap.set(copy, { y: 30, opacity: 0 });
+      let shown = false;
+      const reveal = () => {
+        if (shown) return;
+        shown = true;
+        $$('[data-draw]', panel).forEach((s, i) => draw(s, i * 0.25));
+        gsap.to(copy, { y: 0, opacity: 1, duration: 1.1, ease: 'expo.out', stagger: 0.08, delay: 0.2 });
+      };
+      // fire on entering, on being skipped past by a fast scroll, or if the page loads already past it
       ScrollTrigger.create({
-        trigger: panel, containerAnimation: horiz, start: 'left 72%', once: true,
-        onEnter: () => {
-          $$('[data-draw]', panel).forEach((s, i) => draw(s, i * 0.25));
-          gsap.to(copy, { y: 0, opacity: 1, duration: 1.1, ease: 'expo.out', stagger: 0.08, delay: 0.2 });
-        },
+        trigger: panel, containerAnimation: horiz, start: 'left 80%', end: 'right left',
+        onEnter: reveal, onEnterBack: reveal, onLeave: reveal,
+        onRefresh: (st) => { if (st.progress > 0) reveal(); },
       });
       gsap.fromTo($('.look', panel), { xPercent: 12 }, {
         xPercent: -12, ease: 'none',
@@ -530,9 +536,8 @@
     },
   });
 
-  /* Triggers were created out of page order (values before the pinned day), so
-     sort them by position and recalculate with pin spacing in place. */
-  ScrollTrigger.sort();
+  /* Some triggers below the pinned day were created before it (values, reveals, rail);
+     they carry refreshPriority -1 so they're measured after the pin spacing exists. */
   ScrollTrigger.refresh();
   addEventListener('load', () => ScrollTrigger.refresh());
 })();
