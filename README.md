@@ -8,7 +8,9 @@ Brand site for Pen and Sword, menswear for the first chapter. Static HTML, CSS a
 python3 -m http.server 5173 --bind 127.0.0.1
 ```
 
-Then open http://127.0.0.1:5173. Any static host works (Netlify, Vercel, GitHub Pages, Cloudflare Pages): upload the folder as-is.
+Then open http://127.0.0.1:5173.
+
+Temporary live preview: https://chrispychips12.github.io/pen-and-sword/ (GitHub Pages, from `main`). Any static host works (Netlify, Vercel, GitHub Pages, Cloudflare Pages): upload the folder as-is.
 
 ## Files
 
@@ -18,14 +20,15 @@ Then open http://127.0.0.1:5173. Any static host works (Netlify, Vercel, GitHub 
 | `styles.css` | Tokens (colours, type scale, spacing) at the top, then sections in page order |
 | `main.js` | Interactions: intro, smooth scroll, the desk-to-drinks day, values, product rail, mark story |
 | `products.js` | Collection 01 data. **Edit this to add real products** |
-| `assets/photos/` | Placeholder photos taken from the brandbook moodboard. Replace before launch |
+| `garments.js` | Line drawings for the desk-to-drinks story (they draw themselves in on scroll) |
+| `assets/photos/` | Placeholder product photos taken from the brandbook moodboard. Replace before launch |
 | `assets/` | Logo mark, sword, quill and wordmark as SVG, extracted from the brandbook PDF |
 
 ## Adding real products
 
 In `products.js`, set each piece's `image`, `imageAlt` and `price`. `focus` sets which part of the photo stays in frame (CSS object-position). A piece with no image shows a faint brand mark. Recommended photo ratio: 4:5.
 
-The current photos are the brandbook's reference imagery, which isn't Pen and Sword's own photography. Swap them all for real shoots before the site goes public. The four desk-to-drinks photos are set in `index.html`.
+The current photos are the brandbook's reference imagery, which isn't Pen and Sword's own photography. Swap them all for real shoots before a proper launch.
 
 ## Typeface
 
